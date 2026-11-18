@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: school-erp
+    runtime: static
+    buildCommand: echo "Static website - no build required"
+    staticPublishPath: ./school_erp
