@@ -1,22 +1,10 @@
-# School ERP – Starter Project
+# School ERP
 
 ## Run the website
-1. Download and extract `school_erp_starter.zip`.
-2. Open the `school_erp` folder.
-3. Double-click `index.html` to open it in Chrome, Edge, or Firefox.
+Open `index.html` in a browser, or serve this folder with any static file server.
 
-No installation or internet connection is required for this frontend demo.
-
-## Deploy on Render
-1. Push this project to a GitHub, GitLab, or Bitbucket repository.
-2. In Render, choose **New > Blueprint** and select the repository.
-3. Render will use `render.yaml` to create a static site.
-4. The publish directory is `school_erp`; no build command or dependencies are required.
-
-You can also deploy manually:
-- Service type: **Static Site**
-- Build command: leave blank or use `echo "Static website - no build required"`
-- Publish directory: `school_erp`
+## Deploy on Vercel
+The repository root contains `vercel.json`, which configures Vercel to publish this folder as a static site. Import the Git repository into Vercel, keep the root directory as `.`, and deploy. No build command, dependencies, or framework are required.
 
 ## Included
 - Admin dashboard
@@ -31,6 +19,7 @@ You can also deploy manually:
 - `index.html` – page structure
 - `styles.css` – layout and responsive styles
 - `app.js` – interface behavior and browser storage
+- `../vercel.json` – Vercel deployment settings
 
 ## Important
 This is a frontend demo. It starts with fictional sample data and stores changes in the current browser using localStorage. Data is not shared between users or devices and may be cleared by the browser. It has no secure login, server, shared database, payment gateway, backups, or role permissions. Do not enter real student personal or financial information.
