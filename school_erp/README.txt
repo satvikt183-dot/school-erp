@@ -20,18 +20,20 @@ You can also deploy manually:
 
 ## Included
 - Admin dashboard
-- Student directory with search
-- Add student form (saved in this browser using localStorage)
-- Teacher directory
-- Attendance demo
-- Fees overview
-- Examination schedule
-- Weekly timetable
-- Notices
+- Student and teacher directories with search, add, edit, and delete
+- Attendance by date, with totals saved in this browser
+- Fee records, payment status, and dashboard totals
+- Examination schedule and notices with add, edit, and delete
+- Editable weekly timetables and saved school settings
 - Responsive sidebar for mobile
 
+## Project files
+- `index.html` – page structure
+- `styles.css` – layout and responsive styles
+- `app.js` – interface behavior and browser storage
+
 ## Important
-This is a frontend prototype. It uses sample data and browser localStorage. It is NOT production-ready and does not yet include secure login, a server, shared multi-user database, payment gateway, backups, or role permissions. Do not enter real student personal or financial information.
+This is a frontend demo. It starts with fictional sample data and stores changes in the current browser using localStorage. Data is not shared between users or devices and may be cleared by the browser. It has no secure login, server, shared database, payment gateway, backups, or role permissions. Do not enter real student personal or financial information.
 
 ## Suggested next phase
-Build a backend with secure authentication, role-based permissions, a database, audit logs, backups, and server-side validation. Test with fictional data before using real school records.
+Before using real school records, add a backend with secure authentication, role-based permissions, a shared database, audit logs, backups, and server-side validation. Test with fictional data first.
