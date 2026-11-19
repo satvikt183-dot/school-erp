@@ -1,64 +1,32 @@
 "use strict";
 
-const STORAGE_KEY = "schoolErpDataV1";
-const classNames = ["Class VI", "Class VII", "Class VIII", "Class IX", "Class X", "Class XI", "Class XII"];
+const STORAGE_KEY = "schoolErpDataV2";
+const classNames = [
+  "Nursery",
+  "LKG",
+  "UKG",
+  "Class I",
+  "Class II",
+  "Class III",
+  "Class IV",
+  "Class V",
+  "Class VI",
+  "Class VII",
+  "Class VIII",
+  "Class IX",
+  "Class X",
+  "Class XI",
+  "Class XII"
+];
 const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 const periods = ["08:00–09:00", "09:00–10:00", "10:30–11:30", "11:30–12:30", "12:30–01:30"];
-const defaultStudents = [
-  { id: "student-1", name: "Aarav Sharma", cls: "Class X", adm: "ADM-2026-001", guardian: "Rajesh Sharma", status: "Active" },
-  { id: "student-2", name: "Ananya Verma", cls: "Class IX", adm: "ADM-2026-002", guardian: "Sanjay Verma", status: "Active" },
-  { id: "student-3", name: "Vihaan Gupta", cls: "Class VIII", adm: "ADM-2026-003", guardian: "Amit Gupta", status: "Active" },
-  { id: "student-4", name: "Ishita Singh", cls: "Class X", adm: "ADM-2026-004", guardian: "Rakesh Singh", status: "Active" },
-  { id: "student-5", name: "Aditya Mishra", cls: "Class VII", adm: "ADM-2026-005", guardian: "Manoj Mishra", status: "Active" },
-  { id: "student-6", name: "Sara Khan", cls: "Class XI", adm: "ADM-2026-006", guardian: "Imran Khan", status: "Active" }
-];
-const defaultTeachers = [
-  { id: "teacher-1", name: "Priya Mehta", subject: "Mathematics", employeeId: "TCH-001", contact: "98765 43210", status: "Active" },
-  { id: "teacher-2", name: "Rahul Kapoor", subject: "Physics", employeeId: "TCH-002", contact: "98765 43211", status: "Active" },
-  { id: "teacher-3", name: "Neha Sharma", subject: "English", employeeId: "TCH-003", contact: "98765 43212", status: "Active" },
-  { id: "teacher-4", name: "Amit Verma", subject: "Computer Science", employeeId: "TCH-004", contact: "98765 43213", status: "Active" },
-  { id: "teacher-5", name: "Pooja Singh", subject: "Chemistry", employeeId: "TCH-005", contact: "98765 43214", status: "Active" }
-];
-const defaultFees = [
-  { id: "fee-1", studentId: "student-1", amount: 18000, dueDate: "2026-11-30", status: "Paid" },
-  { id: "fee-2", studentId: "student-2", amount: 16000, dueDate: "2026-11-30", status: "Pending" },
-  { id: "fee-3", studentId: "student-3", amount: 15000, dueDate: "2026-11-30", status: "Paid" },
-  { id: "fee-4", studentId: "student-4", amount: 18000, dueDate: "2026-11-30", status: "Pending" },
-  { id: "fee-5", studentId: "student-5", amount: 14000, dueDate: "2026-11-30", status: "Paid" }
-];
-const defaultExams = [
-  { id: "exam-1", title: "Half-Yearly", cls: "Classes VI–X", date: "2026-12-12", subject: "Mathematics", status: "Upcoming" },
-  { id: "exam-2", title: "Unit Test 3", cls: "Classes III–V", date: "2026-11-25", subject: "English", status: "Upcoming" },
-  { id: "exam-3", title: "Periodic Test 2", cls: "Classes XI–XII", date: "2026-11-10", subject: "Physics", status: "Completed" }
-];
-const defaultNotices = [
-  { id: "notice-1", title: "Annual Sports Day", body: "Annual Sports Day will be held on 05 December. Students should report by 8:00 AM.", date: "2026-11-15" },
-  { id: "notice-2", title: "Half-Yearly Examination", body: "The half-yearly examination schedule has been published. Please check the examination section.", date: "2026-11-12" },
-  { id: "notice-3", title: "Winter Uniform", body: "All students must wear the prescribed winter uniform from 20 November.", date: "2026-11-10" }
-];
-const defaultTimetable = {
-  "Class X - A": [
-    ["English", "Mathematics", "Science", "Computer", "Hindi"],
-    ["Mathematics", "Hindi", "Social Science", "English", "Sports"],
-    ["Science", "Computer", "Mathematics", "Hindi", "English"],
-    ["Social Science", "English", "Science", "Mathematics", "Library"],
-    ["Hindi", "Science", "English", "Social Science", "Sports"]
-  ],
-  "Class IX - A": [
-    ["Mathematics", "English", "Science", "Hindi", "Computer"],
-    ["English", "Science", "Hindi", "Mathematics", "Sports"],
-    ["Science", "Mathematics", "Computer", "English", "Hindi"],
-    ["Hindi", "Social Science", "English", "Science", "Library"],
-    ["Social Science", "English", "Mathematics", "Hindi", "Sports"]
-  ],
-  "Class VIII - B": [
-    ["English", "Science", "Mathematics", "Hindi", "Art"],
-    ["Mathematics", "English", "Social Science", "Science", "Sports"],
-    ["Hindi", "Mathematics", "English", "Computer", "Science"],
-    ["Science", "Hindi", "Mathematics", "Social Science", "Library"],
-    ["Social Science", "English", "Science", "Hindi", "Sports"]
-  ]
-};
+const defaultStudents = [];
+const defaultTeachers = [];
+const defaultFees = [];
+const defaultExams = [];
+const defaultNotices = [];
+const emptyWeek = () => weekdays.map(() => periods.map(() => ""));
+const defaultTimetable = Object.fromEntries(classNames.map(name => [name, emptyWeek()]));
 const emptyDatabase = () => ({
   students: defaultStudents.map(student => ({ ...student })),
   teachers: defaultTeachers.map(teacher => ({ ...teacher })),
@@ -67,7 +35,7 @@ const emptyDatabase = () => ({
   notices: defaultNotices.map(notice => ({ ...notice })),
   attendance: {},
   timetable: JSON.parse(JSON.stringify(defaultTimetable)),
-  settings: { schoolName: "School ERP Demo School", session: "2026–2027", email: "admin@school.edu" }
+  settings: { schoolName: "", session: "", email: "" }
 });
 
 const toastElement = document.getElementById("toast");
@@ -112,27 +80,11 @@ function loadDatabase() {
         settings: parsed.settings && typeof parsed.settings === "object" ? { ...defaults.settings, ...parsed.settings } : defaults.settings
       };
     } catch (error) {
-      toast(`Saved data could not be read; loading demo data instead. ${error.message}`);
+      toast(`Saved data could not be read; loading a clean database instead. ${error.message}`);
     }
   }
 
-  const defaults = emptyDatabase();
-  const legacyStudents = readLocalStorage("schoolErpStudents");
-  if (legacyStudents) {
-    try {
-      const parsed = JSON.parse(legacyStudents);
-      if (Array.isArray(parsed)) {
-        defaults.students = parsed.map((student, index) => ({
-          ...student,
-          id: student.id || `legacy-student-${index + 1}`,
-          status: student.status || "Active"
-        }));
-      }
-    } catch (error) {
-      toast(`Previously saved students could not be read. ${error.message}`);
-    }
-  }
-  return defaults;
+  return emptyDatabase();
 }
 
 function updateDatabase(change, successMessage) {
@@ -354,7 +306,7 @@ function renderAll() {
 
 const fieldDefinitions = {
   student: [
-    { name: "name", label: "Student full name", required: true, placeholder: "e.g. Aarav Sharma" },
+    { name: "name", label: "Student full name", required: true },
     { name: "cls", label: "Class", type: "select", options: classNames, required: true },
     { name: "adm", label: "Admission number", required: true, placeholder: "e.g. ADM-2026-101" },
     { name: "guardian", label: "Guardian name", placeholder: "Parent / guardian name" },

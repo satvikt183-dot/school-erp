@@ -27,6 +27,6 @@ Open `school_erp/index.html` in a browser, or serve the `school_erp` folder with
 - `school_erp/styles.css` – layout and responsive styles
 - `school_erp/app.js` – dashboard behavior and browser storage
 
-## Demo data and privacy
+## Data and privacy
 
-The site starts with fictional sample data. Changes are saved in that browser's `localStorage`; they are not shared across browsers or devices. This demo has no authentication, backend, shared database, backups, payment gateway, or role permissions. Do not enter real student personal or financial information.
+The site starts empty with no seeded students, teachers, fees, examinations, notices, or school details. Changes are saved in that browser's `localStorage`; they are not shared across browsers or devices. This website has no authentication, backend, shared database, backups, payment gateway, or role permissions.

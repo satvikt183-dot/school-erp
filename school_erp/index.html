@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A responsive school ERP administration dashboard prototype.">
+<meta name="description" content="A responsive school ERP administration dashboard.">
 <meta name="theme-color" content="#14233b">
 <title>School ERP | Admin Dashboard</title>
 <link rel="stylesheet" href="./styles.css">
@@ -30,11 +30,11 @@
 <main class="main">
 <header class="topbar">
   <div style="display:flex;align-items:center;gap:12px"><button class="icon-btn mobile-menu" id="menuBtn">☰</button><div><div class="crumb">School / <span id="crumb">Dashboard</span></div><h1 id="pageTitle">Dashboard</h1></div></div>
-  <div class="top-actions"><div class="profile"><div class="avatar">AD</div><div><b>Administrator</b><small>Super Admin</small></div></div></div>
+  <div class="top-actions"><div class="profile"><div class="avatar">SA</div><div><b>School Admin</b><small>Super Admin</small></div></div></div>
 </header>
 
 <section class="page active" id="page-dashboard">
-  <div class="welcome"><div><h2>Good morning, Administrator 👋</h2><p>Here's what's happening at your school today.</p></div><div class="date-pill" id="today"></div></div>
+  <div class="welcome"><div><h2>Good morning 👋</h2><p>Here's what's happening at your school today.</p></div><div class="date-pill" id="today"></div></div>
   <div class="stats">
     <div class="stat"><div class="stat-top">Total Students <span class="stat-icon" style="background:#edf2ff;color:#416bd0">♙</span></div><strong id="studentCount">0</strong><small>Student records in this browser</small></div>
     <div class="stat"><div class="stat-top">Total Teachers <span class="stat-icon" style="background:#e8f7f1;color:#159b70">♟</span></div><strong id="teacherCount">0</strong><small>Active teaching staff</small></div>
@@ -63,10 +63,10 @@
 
 <section class="page" id="page-exams"><div class="cards-3"><div class="info-card"><small>Next examination</small><b id="upcomingExam" style="font-size:17px">—</b><small id="upcomingExamDate"></small></div><div class="info-card"><small>Completed examinations</small><b id="completedExams">0</b><small>Recorded examination cycles</small></div><div class="info-card"><small>Subjects</small><b id="subjectCount">0</b><small>Subjects in schedule</small></div></div><div class="panel" style="margin-top:16px"><div class="panel-head"><h3>Examination Schedule</h3><button class="btn" data-action="add-exam">＋ Create Exam</button></div><div class="table-wrap"><table><thead><tr><th>EXAMINATION</th><th>CLASS</th><th>DATE</th><th>SUBJECT</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="examRows"></tbody></table></div></div></section>
 
-<section class="page" id="page-timetable"><div class="panel"><div class="panel-head"><h3>Weekly Timetable</h3><select class="search" id="timetableClass" aria-label="Select timetable class" style="width:auto"><option>Class X - A</option><option>Class IX - A</option><option>Class VIII - B</option></select></div><p class="crumb">Select a cell and update its subject; changes are saved in this browser.</p><div class="table-wrap"><table><thead><tr><th>DAY</th><th>08:00–09:00</th><th>09:00–10:00</th><th>10:30–11:30</th><th>11:30–12:30</th><th>12:30–01:30</th></tr></thead><tbody id="timetableRows"></tbody></table></div></div></section>
+<section class="page" id="page-timetable"><div class="panel"><div class="panel-head"><h3>Weekly Timetable</h3><select class="search" id="timetableClass" aria-label="Select timetable class" style="width:auto"></select></div><p class="crumb">Select a cell and update its subject; changes are saved in this browser.</p><div class="table-wrap"><table><thead><tr><th>DAY</th><th>08:00–09:00</th><th>09:00–10:00</th><th>10:30–11:30</th><th>11:30–12:30</th><th>12:30–01:30</th></tr></thead><tbody id="timetableRows"></tbody></table></div></div></section>
 
 <section class="page" id="page-notices"><div class="toolbar"><span class="crumb">School announcements and circulars</span><button class="btn" data-action="add-notice">＋ Publish Notice</button></div><div class="panel" id="allNotices"></div></section>
-<section class="page" id="page-settings"><form class="panel" id="settingsForm"><div class="panel-head"><h3>School Settings</h3></div><div class="field"><label for="settingSchoolName">School name</label><input id="settingSchoolName" name="schoolName" required></div><div class="field"><label for="settingSession">Academic session</label><input id="settingSession" name="session" required></div><div class="field"><label for="settingEmail">Administrator email</label><input id="settingEmail" name="email" type="email" required></div><button class="btn" type="submit">Save Settings</button><p class="crumb" style="margin-top:15px">Settings are stored in this browser only. This demo does not have a server or user accounts.</p></form></section>
+<section class="page" id="page-settings"><form class="panel" id="settingsForm"><div class="panel-head"><h3>School Settings</h3></div><div class="field"><label for="settingSchoolName">School name</label><input id="settingSchoolName" name="schoolName" required placeholder="Enter your school name"></div><div class="field"><label for="settingSession">Academic session</label><input id="settingSession" name="session" required placeholder="e.g. 2026–2027"></div><div class="field"><label for="settingEmail">Administrator email</label><input id="settingEmail" name="email" type="email" required></div><button class="btn" type="submit">Save Settings</button><p class="crumb" style="margin-top:15px">Settings are stored in this browser only.</p></form></section>
 
 </main></div>
 
